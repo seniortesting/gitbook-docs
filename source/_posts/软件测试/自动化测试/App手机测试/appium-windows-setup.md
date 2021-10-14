@@ -16,7 +16,7 @@ appium选择了client-server的设计模式。只要client能够发送http请求
 
 ## 服务端配置
 
-1. 在appium-desktop中下载对应的Windows安装包，下载地址： <https://github.com/appium/appium-desktop/releases>
+1. 在appium-desktop中下载对应的Windows安装包(**zip格式版本**)，下载地址： <https://github.com/appium/appium-desktop/releases>
 
 2. 打开命令行切换到appium-desktop安装路径，确认是否配置正确：
 
@@ -68,10 +68,18 @@ dumpsys window | grep "mCurrentFocus"
 记下当前激活的窗口： com.miui.calculator和com.miui.calculator.cal.CalculatorActivity
 ![20200903082117-2020-09-03](https://raw.githubusercontent.com/alterhu2020/StorageHub/master/img/20200903082117-2020-09-03.png)
 
-**该步骤操作可通过sdk tool命令查找到对应的packagename和main activity，参考文档： https://blog.csdn.net/xiaosongbk/article/details/82903148**
+**该步骤操作可通过sdk tool命令查找到对应的package Name和main activity，参考文档： https://blog.csdn.net/xiaosongbk/article/details/82903148**
 
-4.4 启动appium-desktop，点击右上角的放大镜，在弹出的页面中输入前面3步所获取到的值，然后点击Start Session即可连接，如图：
+4.4 启动appium-desktop，~~点击右上角的放大镜，在弹出的页面中输入前面3步所获取到的值~~，然后点击Start Session即可连接，如图：
+最新版本的Appium需要单独下载额外的Inspector包： <https://github.com/appium/appium-inspector/tree/main>
 ![20200903082236-2020-09-03](https://raw.githubusercontent.com/alterhu2020/StorageHub/master/img/20200903082236-2020-09-03.png)
+
+打开的新的session窗口的`Appium Server` 设置如下：
+1. Remote Host: 127.0.0.1
+2. Remote Port: 4723
+3. Remote Path: /wd/hub
+
+不用勾选“SSL”即可
 
 打开新的session窗口后在`Desired Capabilities`中输入如下配置参数：
 
@@ -128,7 +136,7 @@ driver.quit()
 　设置——我的设备——全部参数——对着“MIUI版本”那一项点7次，会提示开发者选项打开。然后回到 设置——更多设置——开发者选项，将“**开启开发者选项**”、“**USB调试**”的开关设置为开启状态。
 ![20200903081628-2020-09-03](https://raw.githubusercontent.com/alterhu2020/StorageHub/master/img/20200903081628-2020-09-03.png)
 
-2. 在点击“Start Sesssion"后记得点击允许安装对应的**appium-settings.apk**和 **appium-uiautomator2-server-v4.11.0.apk**包到真是的机器上，或者也可以自己进行安装，安装包位置位于appium的安装目录下面：
+2. 在Appium Inspector中点击“Start Sesssion"后记得点击允许安装对应的**appium-settings.apk**和 **appium-uiautomator2-server-v4.11.0.apk**包到真是的机器上，或者也可以自己进行安装，安装包位置位于appium的安装目录下面：
 
 `E:\\WindowsApps\\Appium-windows-1.18.0-1\\resources\\app\\node_modules\\appium\\node_modules\\io.appium.settings\\apks\\settings_apk-debug.apk`
 
@@ -146,7 +154,7 @@ driver.quit()
 
 3. An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'E:\\AndroidSDK\\platform-tools\\adb.exe -P 5037 -s 688190fa0705 install -g E:\\WindowsApps\\Appium-windows-1.18.0-1\\resources\\app\\node_modules\\appium\\node_modules\\io.appium.settings\\apks\\settings_apk-debug.apk' exited with code 1'; Stderr: 'adb: failed to install E:\WindowsApps\Appium-windows-1.18.0-1\resources\app\node_modules\appium\node_modules\io.appium.settings\apks\settings_apk-debug.apk: Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]'; Code: '1'
 
-解决方法： 打开Session后会在你的手机设备上安装一个appium-settings.apk的安装包，很多手机会阻止安装，你需要打开你的手机，在弹出的提示里允许进行操作安装apk。
+解决方法： 打开Appium Inspector中Start Session后会在你的手机设备上安装一个appium-settings.apk的安装包，很多手机会阻止安装，你需要打开你的手机，在弹出的提示里允许进行操作安装apk。
 
 4. An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command 'E:\\AndroidSDK\\platform-tools\\adb.exe -P 5037 -s 688190fa0705 install -r --no-incremental E:\\WindowsApps\\Appium-windows-1.18.0-1\\resources\\app\\node_modules\\appium\\node_modules\\appium-uiautomator2-server\\apks\\appium-uiautomator2-server-v4.11.0.apk' exited with code 1'; Stderr: 'adb: failed to install E:\WindowsApps\Appium-windows-1.18.0-1\resources\app\node_modules\appium\node_modules\appium-uiautomator2-server\apks\appium-uiautomator2-server-v4.11.0.apk: Failure [INSTALL_FAILED_USER_RESTRICTED: Install canceled by user]'; Code: '1'
 
