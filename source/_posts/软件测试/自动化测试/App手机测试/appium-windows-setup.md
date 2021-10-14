@@ -4,11 +4,15 @@ tags: [appium,mobile testing]
 keywords: 'appium,mobile testing'
 categories: []
 abbrlink: OvVxU2q7eB
-date: 2021-04-14 23:11:10
+date: 2021-10-14 23:11:10
 description:
 ---
 
-ArtiPub (Article Publisher的简称，意为"文章发布者")是一款开源的一文多发平台，可以帮助文章作者将编写好的文章自动发布到掘金、SegmentFault、CSDN、知乎、开源中国等技术媒体平台，传播优质知识，获取最大的曝光度。ArtiPub安装简单，提供了多种安装方式，可以一键安装使用，安装一般只要5分钟。
+Appium是一个开源、跨平台的测试框架，可以用来测试原生及混合的移动端应用。Appium支持IOS、Android及FirefoxOS平台。**Appium使用WebDriver的json wire协议，来驱动Apple系统的UIAutomation库、Android系统的UIAutomator框架**。Appium对IOS系统的支持得益于Dan Cuellar’s对于IOS自动化的研究。Appium也集成了Selendroid，来支持老android版本。
+
+Appium支持Selenium WebDriver支持的所有语言，如java、Object-C、JavaScript、Php、Python、Ruby、C#、Clojure，或者Perl语言，更可以使用Selenium WebDriver的Api。Appium支持任何一种测试框架。如果只使用Apple的UIAutomation，我们只能用javascript来编写测试用例，而且只能用Instruction来运行测试用例。同样，如果只使用Google的UIAutomation，我们就只能用java来编写测试用例。Appium实现了真正的跨平台自动化测试。
+
+appium选择了client-server的设计模式。只要client能够发送http请求给server，那么的话client用什么语言来实现都是可以的，这就是appium及webdriver如何做到支持多语言的；
 
 ## 服务端配置
 
@@ -31,7 +35,6 @@ iOS：UIAutomation，iOS系统自带的UI自动化测试工具。
 
 Appium Server的图形界面。 可以设置选项，启动/停止服务器，查看日志等...也不需要使用Node 的NPM来安装Appium，因为Node运行时与Appium Desktop捆绑在一起。
 
-Appium的客户端和服务端之间进行通信都必须在一个Session的上下文中进行。客户端在发起通信的时候首先会发送一个叫作“Desired Capabilities”的JSON对象给服务器。服务器收到该数据后，会创建一个session并将session的ID返回到客户端。之后客户端可以用该session的ID发送后续的命令。
 
 3. 安装安卓SDK（可以对手机进行连接操作，包括获取id，设备名，包名等）
 
@@ -64,6 +67,8 @@ dumpsys window | grep "mCurrentFocus"
 
 记下当前激活的窗口： com.miui.calculator和com.miui.calculator.cal.CalculatorActivity
 ![20200903082117-2020-09-03](https://raw.githubusercontent.com/alterhu2020/StorageHub/master/img/20200903082117-2020-09-03.png)
+
+**该步骤操作可通过sdk tool命令查找到对应的packagename和main activity，参考文档： https://blog.csdn.net/xiaosongbk/article/details/82903148**
 
 4.4 启动appium-desktop，点击右上角的放大镜，在弹出的页面中输入前面3步所获取到的值，然后点击Start Session即可连接，如图：
 ![20200903082236-2020-09-03](https://raw.githubusercontent.com/alterhu2020/StorageHub/master/img/20200903082236-2020-09-03.png)
@@ -123,7 +128,7 @@ driver.quit()
 　设置——我的设备——全部参数——对着“MIUI版本”那一项点7次，会提示开发者选项打开。然后回到 设置——更多设置——开发者选项，将“**开启开发者选项**”、“**USB调试**”的开关设置为开启状态。
 ![20200903081628-2020-09-03](https://raw.githubusercontent.com/alterhu2020/StorageHub/master/img/20200903081628-2020-09-03.png)
 
-2. 在点击“Start Sesssion"后记得点击允许安装对应的**appium-settings.apk**和 **appium-uiautomator2-server-v4.11.0.apk**包，或者也可以自己进行安装，安装包位置位于appium的安装目录下面：
+2. 在点击“Start Sesssion"后记得点击允许安装对应的**appium-settings.apk**和 **appium-uiautomator2-server-v4.11.0.apk**包到真是的机器上，或者也可以自己进行安装，安装包位置位于appium的安装目录下面：
 
 `E:\\WindowsApps\\Appium-windows-1.18.0-1\\resources\\app\\node_modules\\appium\\node_modules\\io.appium.settings\\apks\\settings_apk-debug.apk`
 
