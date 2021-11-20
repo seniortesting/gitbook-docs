@@ -1,9 +1,9 @@
 {
-  "name": "seniortesting.clue.site",
+  "name": "memego.xyz.site",
   "version": "1.0.0",
   "private": true,
   "description": "高级测试开发网",
-  "homepage": "https://seniortesting.club",
+  "homepage": "https://memego.xyz",
   "scripts": {
     "s": "hexo clean && hexo g && hexo s",
     "d": "hexo clean && hexo generate && gulp && hexo deploy"

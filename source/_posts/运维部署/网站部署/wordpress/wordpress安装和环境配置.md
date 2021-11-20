@@ -15,7 +15,7 @@ top_img:
 ## Install wordpress
 
 ```
-cd /www/web/blog.seniortesting.club
+cd /www/web/blog.memego.xyz
 wget https://wordpress.org/latest.tar.gz
 tar xpf latest.tar.gz
 cp -r wordpress ../
@@ -51,7 +51,7 @@ $ sudo systemctl restart php7.3-fpm.service
 ## 配置nginx
 
 ```
-root /www/web/www.seniortesting.club;
+root /www/web/www.memego.xyz;
 index index.html index.htm index.php;
 
 location / {
@@ -220,6 +220,6 @@ require_once( ABSPATH . 'wp-settings.php' );
 原因是全站采用了https后引用的相关css和js文件由于采用的是frp导致对应的协议是http的要求，此处可以修改git主题下面的`functions.php`中的`GIT_URL`参数为如下：
 
 ```
-define('GIT_URL', 'https://seniortesting.club/wp-content/themes/git');
+define('GIT_URL', 'https://memego.xyz/wp-content/themes/git');
 
 ```

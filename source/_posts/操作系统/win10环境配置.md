@@ -63,7 +63,7 @@ top_img:
      1.3 Markdown Shortcuts
      1.4 markdownlint
      1.5 vscode-pdf
-     1.6 PicGo （配置操作: <https://code.seniortesting.club/blog/setup/how-setup-picgo-vscode.html> )
+     1.6 PicGo （配置操作: <https://code.memego.xyz/blog/setup/how-setup-picgo-vscode.html> )
      1.7 Visual Studio IntelliCode
      1.8 Python
      1.9 Impornt Cost

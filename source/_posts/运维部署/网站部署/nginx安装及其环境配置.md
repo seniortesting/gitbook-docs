@@ -185,12 +185,12 @@ sudo apt-get install certbot -y
 2. 配置nginx和SSL
 
 参考配置文件,每次只需要修改对应的域名(Domain)和目录(Path):
- [nginxconfig助手](https://www.digitalocean.com/community/tools/nginx#?0.domain=seniortesting.club&0.path=%2Fwww%2Fweb%2Fseniortesting.club&0.document_root=&0.redirect=false&0.email=alterhu2020@gmail.com&0.php=false&0.proxy&0.index=index.html&0.access_log_domain&0.error_log_domain&directory_letsencrypt=%2Fwww%2F_letsencrypt%2F&brotli&log_not_found&symlink=false)
+ [nginxconfig助手](https://www.digitalocean.com/community/tools/nginx#?0.domain=memego.xyz&0.path=%2Fwww%2Fweb%2Fmemego.xyz&0.document_root=&0.redirect=false&0.email=alterhu2020@gmail.com&0.php=false&0.proxy&0.index=index.html&0.access_log_domain&0.error_log_domain&directory_letsencrypt=%2Fwww%2F_letsencrypt%2F&brotli&log_not_found&symlink=false)
 
 以后每次配置子域名，只需要配置好对应的conf文件然后执行如下命令:
 
 ```
-certbot certonly --webroot -d res.seniortesting.club --email alterhu2020@gmail.com -w /www/_letsencrypt -n --agree-tos --force-renewal
+certbot certonly --webroot -d res.memego.xyz --email alterhu2020@gmail.com -w /www/_letsencrypt -n --agree-tos --force-renewal
 ```
 
 ::: warning Symlink vhost配置文件
@@ -198,7 +198,39 @@ certbot certonly --webroot -d res.seniortesting.club --email alterhu2020@gmail.c
 完成以上的配置后不行看任意修改文件
 :::
 
-## 配置静态域名：res.seniortesting.club
+3. 配置letsencrypt自动续期
+
+参考文档：
+ - <https://serverfault.com/questions/790772/cron-job-for-lets-encrypt-renewal>
+ - <https://stackoverflow.com/questions/41535546/how-do-i-schedule-the-lets-encrypt-certbot-to-automatically-renew-my-certificat>
+   
+Let's Encrypt申请的证书会有三个月的有效期，可以到期前手动续约，也可以自己写定时脚本任务自动续约。嫌手动麻烦，就写了个简单的续期脚本。一般安装完后`certbot`也会自动创建一个cronjob文件在目录： `/etc/cron.d/certbot`. 但是需要你执行如下的命令才能生效，默认是每天执行一次检查。
+
+Note: in 18.04 LTS the `letsencrypt` package has been (finally) renamed to `certbot`. It now includes a `systemd` timer which you can enable to schedule certbot renewals, with `systemctl enable certbot.timer` and `systemctl start certbot.timer`. However, Ubuntu did not provide a way to specify hooks. You'll need to set up an override for `certbot.service` to override ExecStart= with your desired command line, until Canonical fixes this.
+
+
+3.1 python脚本版：
+
+```bash
+$ echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew --force-renew" | sudo tee -a /etc/crontab > /dev/null
+
+```
+3.2 （推荐）直接使用上述的配置文件`/etc/cron.d/certbot`
+
+```bash
+$ nano /etc/cron.d/certbot
+$ systemctl enable certbot.timer
+$ systemctl start certbot.timer
+```
+检查是否设置成功:
+```bash
+$ systemctl list-timers (or systemctl list-timers --all if you also want to show inactive timers).
+```
+
+The certbot timer should be here `/lib/systemd/system/certbot.timer` and it will execute the command specified in `/lib/systemd/system/certbot.service`
+
+
+## 配置静态域名：res.memego.xyz
 
 对于静态资源展示，提供了几种方式配置：
 

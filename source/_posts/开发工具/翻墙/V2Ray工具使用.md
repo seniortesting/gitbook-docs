@@ -14,7 +14,7 @@ top_img:
 
 ## Github 翻墙速度提升
 
-<https://code.seniortesting.club/blog/2020/How-To-Speed-Github.html>
+<https://code.memego.xyz/blog/2020/How-To-Speed-Github.html>
 
 ## V2Ray
 

@@ -48,7 +48,7 @@ dashboard_port = 7500
 dashboard_user = admin
 dashboard_pwd = xxtestd231lx0)
 
-# subdomain_host = seniortesting.club
+# subdomain_host = memego.xyz
 
 ```
 
@@ -401,9 +401,9 @@ use_compression = true
 
 local_ip = 127.0.0.1
 local_port = 3000
-custom_domains= www.seniortesting.club,seniortesting.club
+custom_domains= www.memego.xyz,memego.xyz
 
-# 2. code.seniortesting.club博客网站
+# 2. code.memego.xyz博客网站
 [blog.http]
 type = http
 use_encryption = false
@@ -411,9 +411,9 @@ use_compression = true
 
 local_ip = 127.0.0.1
 local_port = 80
-custom_domains= code.seniortesting.club
+custom_domains= code.memego.xyz
 
-# 3. doc.seniortesting.club文档网址
+# 3. doc.memego.xyz文档网址
 [doc.http]
 type = http
 use_encryption = false
@@ -421,9 +421,9 @@ use_compression = true
 
 local_ip = 127.0.0.1
 local_port = 3007
-custom_domains= doc.seniortesting.club
+custom_domains= doc.memego.xyz
 
-# 4. jvfast.seniortesting.club演示网站
+# 4. jvfast.memego.xyz演示网站
 [jvfast.http]
 type = http
 use_encryption = false
@@ -431,9 +431,9 @@ use_compression = true
 
 local_ip = 127.0.0.1
 local_port = 3006
-custom_domains= jvfast.seniortesting.club
+custom_domains= jvfast.memego.xyz
 
-# 5. 后台接口open.seniortesting.club配置
+# 5. 后台接口open.memego.xyz配置
 [open.http]
 type = http
 use_encryption = false
@@ -441,6 +441,6 @@ use_compression = true
 
 local_ip = 127.0.0.1
 local_port = 9090
-custom_domains = open.seniortesting.club
+custom_domains = open.memego.xyz
 
 ```

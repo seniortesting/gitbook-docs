@@ -88,6 +88,7 @@ dumpsys window | grep "mCurrentFocus"
   "deviceName": "688190fa0705",
   "platformVersion": "10 QKQ1.19104.001",
   "platformName": "Android",
+  "automationName": "UiAutomator2",
   "appPackage": "com.miui.calculator",
   "appActivity": "com.miui.calculator.cal.CalculatorActivity"
 }
@@ -114,6 +115,7 @@ desc = {}
 desc['deviceName']='PNMxxxxxxxxxUQK'# 手机设备名称，adb devices
 desc['platformVersion']='5.0.2'# 手机版本，在手机中：设置--关于手机
 desc['platformName']='Android' # 手机类型，ios或android
+desc['automationName']='UiAutomator2' # 手机类型，ios或android
 desc['appPackage']='com.miui.calculator'#包名
 desc['appActivity']='com.miui.calculator.cal.CalculatorActivity'#启动入口
 
